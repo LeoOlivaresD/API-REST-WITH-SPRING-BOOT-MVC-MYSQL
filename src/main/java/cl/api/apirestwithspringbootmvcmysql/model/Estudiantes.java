@@ -1,10 +1,30 @@
 package cl.api.apirestwithspringbootmvcmysql.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Estudiantes {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_estudiante")
+    private Integer idEstudiante;
+    @Column(length = 30,nullable = false)
     private String nombre;
-    private String Apellido;
+    @Column(length = 30,nullable = false)
+    private String apellido;
+    @ManyToOne
+    @JoinColumn(name = "estudiante_id")
     private Curso curso;
-    public Estudiantes(){}
+    public Estudiantes(){
+    }
+
+    public Integer getIdEstudiante() {
+        return idEstudiante;
+    }
+
+    public void setIdEstudiante(Integer idEstudiante) {
+        this.idEstudiante = idEstudiante;
+    }
 
     public String getNombre() {
         return nombre;
@@ -15,11 +35,11 @@ public class Estudiantes {
     }
 
     public String getApellido() {
-        return Apellido;
+        return apellido;
     }
 
     public void setApellido(String apellido) {
-        Apellido = apellido;
+        apellido = apellido;
     }
 
     public Curso getCurso() {
