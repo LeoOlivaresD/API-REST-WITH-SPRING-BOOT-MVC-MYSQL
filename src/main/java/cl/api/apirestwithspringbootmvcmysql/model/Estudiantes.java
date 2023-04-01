@@ -1,5 +1,4 @@
 package cl.api.apirestwithspringbootmvcmysql.model;
-
 import jakarta.persistence.*;
 
 @Entity
