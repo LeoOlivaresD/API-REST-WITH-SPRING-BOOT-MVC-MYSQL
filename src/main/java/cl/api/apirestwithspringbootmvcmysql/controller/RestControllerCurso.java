@@ -24,4 +24,8 @@ public class RestControllerCurso {
     public Optional<Curso> curso (@PathVariable Integer id){
         return cursoService.buscarCursoPorId(id);
     }
+    @PutMapping(value = "/api/actualizar")
+    public void actualizarCurso (@RequestBody Curso curso){
+        cursoService.actualizar(curso);
+    }
 }
