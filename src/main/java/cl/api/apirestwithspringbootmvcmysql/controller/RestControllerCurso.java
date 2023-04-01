@@ -2,12 +2,10 @@ package cl.api.apirestwithspringbootmvcmysql.controller;
 import cl.api.apirestwithspringbootmvcmysql.model.Curso;
 import cl.api.apirestwithspringbootmvcmysql.service.CursoImplService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class RestControllerCurso {
@@ -21,5 +19,9 @@ public class RestControllerCurso {
     @GetMapping(value ="/api/listar", headers = "Accept=application/json")
     public List<Curso> listaCursos(){
         return cursoService.listarCursos();
+    }
+    @GetMapping(value = "/api/listarPorId/{id}", headers = "Accept=application/json")
+    public Optional<Curso> curso (@PathVariable Integer id){
+        return cursoService.buscarCursoPorId(id);
     }
 }
