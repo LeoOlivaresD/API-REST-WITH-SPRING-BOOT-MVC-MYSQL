@@ -3,7 +3,6 @@ import cl.api.apirestwithspringbootmvcmysql.model.Curso;
 import cl.api.apirestwithspringbootmvcmysql.service.CursoImplService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -27,5 +26,9 @@ public class RestControllerCurso {
     @PutMapping(value = "/api/actualizar")
     public void actualizarCurso (@RequestBody Curso curso){
         cursoService.actualizar(curso);
+    }
+    @DeleteMapping(value = "/api/eliminar/{id}")
+    public void eliminarCurso(@PathVariable Integer id){
+        cursoService.eliminarCurso(id);
     }
 }
