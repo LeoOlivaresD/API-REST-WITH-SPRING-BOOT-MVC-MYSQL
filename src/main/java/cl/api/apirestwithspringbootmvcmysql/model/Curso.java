@@ -1,4 +1,5 @@
 package cl.api.apirestwithspringbootmvcmysql.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -11,7 +12,8 @@ public class Curso {
     private Integer idCurso;
     @Column(name = "nivel_curso", length = 30, nullable = false)
     private String nivelCurso;
-    @OneToMany
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Estudiantes> estudiantes = new ArrayList<>();
 
     public Curso(){
